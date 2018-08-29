@@ -1,0 +1,35 @@
+---
+
+- name: install git build dependencies
+  apt:
+    name: "{{item}}"
+    state: latest  
+  with_items: 
+    - 'build-essential'
+    - 'libcurl4-gnutls-dev'
+    - 'gettext'
+    - 'zlib1g-dev'
+
+- name: download and extract git source
+  unarchive:
+    dest: /usr/local/src
+    src: https://codeload.github.com/git/git/tar.gz/v{{git.version}}
+    copy: no
+    creates: /usr/local/src/git-{{git.version}}
+    owner: root
+  register: source
+
+- name: compile git from source
+  command: make prefix=/usr/local all
+  args:
+    chdir: /usr/local/src/git-{{git.version}}
+    creates: /usr/local/bin/git
+  register: compile
+  when: source is succeeded
+
+- name: install git from source
+  command: make prefix=/usr/local install
+  args:
+    chdir: /usr/local/src/git-{{git.version}}
+    creates: /usr/local/bin/git
+  when: compile is succeeded

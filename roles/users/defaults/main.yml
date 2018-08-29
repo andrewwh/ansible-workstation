@@ -1,0 +1,9 @@
+---
+
+users:
+  - andrew:
+    name: Andrew Wheeler
+    groups: docker,users,sudo,sambashare,adm
+  - emma:
+    name: Emma Wheeler
+    groups: users

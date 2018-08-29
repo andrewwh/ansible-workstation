@@ -1,0 +1,16 @@
+---
+
+- hosts: localhost
+  become: yes
+  connection: local
+  serial: 1
+  vars:
+    ubuntu:
+      distro: xenial
+  roles:
+    - base
+    - git
+    - tools
+    - docker
+    - users
+    - database

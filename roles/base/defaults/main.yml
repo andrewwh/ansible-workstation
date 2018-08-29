@@ -1,0 +1,10 @@
+---
+
+base:
+  packages:
+    install:    
+      - unzip
+      - build-essential
+      - software-properties-common
+    uninstall:
+      - thunderbird

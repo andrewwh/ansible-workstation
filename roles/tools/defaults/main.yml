@@ -1,0 +1,8 @@
+---
+
+tools:
+  packages:
+    install:    
+      - docker-ce
+      - code
+      - virtualbox-5.1

@@ -1,0 +1,6 @@
+---
+
+- name: create shared directory
+  file: /home/shared
+  owner: root
+  group: users

@@ -1,0 +1,20 @@
+---
+
+- name: install additional packages
+  apt:
+    name: "{{item}}"
+    state: latest  
+  with_items: "{{base.packages.install}}"
+
+- name: uninstall packages
+  apt:
+    name: "{{item}}"
+    state: absent  
+  with_items: "{{base.packages.uninstall}}"
+  ignore_errors: yes
+
+- name: clean up unused packages
+  apt:
+    autoremove: yes
+    autoclean: yes
+  ignore_errors: yes  
