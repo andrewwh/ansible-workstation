@@ -1,6 +1,15 @@
 ---
 
 - name: create shared directory
-  file: /home/shared
-  owner: root
-  group: users
+  file: 
+    path: /home/shared
+    owner: root
+    group: users
+
+- name: Add the users
+  user:
+    name: "{{item.user}}"
+    comment: "{{item.name}}"
+    uid: "{{item.id}}"
+    group: "{{item.groups}}"
+  loop: "{{users}}"

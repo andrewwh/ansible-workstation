@@ -22,8 +22,3 @@ curl -s https://raw.githubusercontent.com/andrewwh/ansible-workstation/master/qu
 ```
 
 This will download the repository as a zip, unpack and execute. Add the "download" argument to download only and not execute
-
-## Change your Ubunut Distro
-Change the distro in the workstation.yml. 
-
-> TODO: get this from ansible facts.

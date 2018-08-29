@@ -6,5 +6,6 @@ base:
       - unzip
       - build-essential
       - software-properties-common
+      - jq
     uninstall:
       - thunderbird

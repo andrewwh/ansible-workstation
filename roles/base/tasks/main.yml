@@ -1,12 +1,13 @@
 ---
 
-- name: install additional packages
+- name: install base packages
   apt:
     name: "{{item}}"
     state: latest  
+    update_cache: true
   with_items: "{{base.packages.install}}"
 
-- name: uninstall packages
+- name: uninstall distro packages
   apt:
     name: "{{item}}"
     state: absent  
@@ -18,3 +19,21 @@
     autoremove: yes
     autoclean: yes
   ignore_errors: yes  
+
+# Not always definitive but usually vagrant boxes come preinstalled with a vagrant user
+- name: check if running in virtualbox
+  stat:
+    path: /home/vagrant
+  register: is_vagrant
+
+- name: install virtualbox additions
+  apt:
+    name: virtualbox-guest-dkms,virtualbox-guest-utils,virtualbox-guest-x11
+    state: latest  
+  when: is_vagrant.stat.exists
+
+- name: install ubuntu desktop
+  apt:
+    name: ubuntu-desktop
+    state: latest  
+  when: is_vagrant.stat.exists  

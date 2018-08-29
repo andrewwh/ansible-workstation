@@ -17,16 +17,16 @@
   pip:
     name: docker-py    
 
-- name: add docker repository
-  apt_repository:
-    name: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ubuntu.distro}} stable
-    state: present
-    filename: docker.list    
-
 - name: add docker repository key
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
-    state: present      
+    state: present    
+    
+- name: add docker repository
+  apt_repository:
+    name: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
+    state: present
+    filename: docker.list      
 
 - name: install docker
   apt:

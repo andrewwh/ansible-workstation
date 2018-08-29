@@ -1,12 +1,9 @@
 ---
 
-- hosts: localhost
+- hosts: all
   become: yes
   connection: local
   serial: 1
-  vars:
-    ubuntu:
-      distro: xenial
   roles:
     - base
     - git

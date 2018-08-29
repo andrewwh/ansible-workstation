@@ -1,9 +1,11 @@
 ---
 
 users:
-  - andrew:
+  - user: andrew
+    id: 1000
     name: Andrew Wheeler
     groups: docker,users,sudo,sambashare,adm
-  - emma:
+  - user: emma
+    id: 1001
     name: Emma Wheeler
     groups: users
