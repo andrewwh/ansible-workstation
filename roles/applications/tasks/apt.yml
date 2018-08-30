@@ -1,0 +1,20 @@
+---
+
+- name: install application packages
+  apt:
+    name: "{{item}}"
+    state: latest  
+  loop: "{{applications.packages.install}}"
+  ignore_errors: yes
+
+- name: uninstall application packages
+  apt:
+    name: "{{item}}"
+    state: absent  
+  with_items: "{{applications.packages.uninstall}}"
+  ignore_errors: yes  
+
+- name: install vagrant
+  apt:
+    deb: https://releases.hashicorp.com/vagrant/2.1.2/vagrant_2.1.2_x86_64.deb
+  ignore_errors: yes

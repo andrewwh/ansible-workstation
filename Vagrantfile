@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
 
     workstation.vm.provision "ansible_local" do |ansible|
       ansible.playbook = "workstation.yml"
-      ansible.verbose = true
+      ansible.verbose = false
       ansible.install_mode = :pip
     end    
   end

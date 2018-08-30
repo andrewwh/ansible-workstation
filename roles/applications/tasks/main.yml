@@ -1,0 +1,6 @@
+---
+
+- include: repositories.yml
+- include: apt.yml
+- include: node.yml
+- include: snaps.yml

@@ -1,0 +1,7 @@
+---
+
+- name: install global npm packages
+  command: "npm install -g {{item}}"
+  args:
+    creates: "/usr/local/bin/{{item}}"
+  loop: "{{applications.npm.global}}"  

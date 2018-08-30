@@ -10,5 +10,11 @@ base:
       - lvm2
       - whois
       - aptitude
+      - samba
+      - net-tools
+      - nmap
+      - iotop
+      - iftop
+      - glances
     uninstall:
       - thunderbird

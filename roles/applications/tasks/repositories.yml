@@ -64,3 +64,10 @@
     state: present
     update_cache: true
     filename: google-chrome
+
+- name: add vlc repository
+  apt_repository:
+    repo: ppa:videolan/master-daily
+    state: present
+    update_cache: true
+    filename: vlc

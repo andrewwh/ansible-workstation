@@ -16,8 +16,9 @@
     name: postgresql-10,pgadmin3
     state: latest
 
-- name: install mysql and tools
-  apt:
-    name: mysql-server,mysql-workbench
-    state: latest
+# Bit of a problem child as it prompts for setup
+#- name: install mysql and tools
+#  apt:
+#    name: mariadb-server,mariadb-client,mysql-workbench
+#    state: latest
     

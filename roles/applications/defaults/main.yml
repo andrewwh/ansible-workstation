@@ -1,0 +1,35 @@
+---
+
+# Removed the following until resolved issues installing:
+#       - winehq-stable
+
+applications:
+  packages:
+    install:    
+      - nodejs
+      - npm
+      - code
+      - virtualbox-5.1
+      - terminator
+      - openjdk-11-jdk
+      - gimp
+      - inkscape
+      - maven
+      - eclipse
+      - google-chrome-stable
+      - ffmpeg
+      - golang
+      - ruby
+      - wireshark
+      - libavcodec-extra
+      - vlc
+  npm:
+    global:
+      - yarn
+      - gulp
+      - typescript
+      - pm2
+  snaps:
+    install:
+      - postman
+      - slack

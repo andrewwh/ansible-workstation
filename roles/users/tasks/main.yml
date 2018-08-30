@@ -8,9 +8,17 @@
     group: users
     recurse: yes
 
-- name: Add the users
+- name: add users
   user:
     name: "{{item.user}}"
     comment: "{{item.name}}"
     groups: "{{item.groups}}"
+  loop: "{{users}}"
+
+- name: copy bashrc for all users
+  copy:
+    src: "{{role_path}}/files/bashrc"
+    dest: "/home/{{item.name}}/.bashrc"
+    owner: "{{item.name}}"
+    group: "{{item.name}}"
   loop: "{{users}}"

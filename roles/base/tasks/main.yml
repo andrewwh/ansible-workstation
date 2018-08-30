@@ -1,5 +1,9 @@
 ---
 
+- name: update installed packages
+  apt:
+    upgrade: yes
+    
 - include: virtualbox.yml
 
 - name: install base packages
