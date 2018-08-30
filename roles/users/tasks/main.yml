@@ -12,5 +12,5 @@
   user:
     name: "{{item.user}}"
     comment: "{{item.name}}"
-    group: "{{item.groups}}"
+    groups: "{{item.groups}}"
   loop: "{{users}}"
