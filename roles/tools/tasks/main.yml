@@ -1,46 +1,6 @@
 ---
 
-- name: add nodejs repository key
-  apt_key:
-    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
-    state: present     
-
-- name: add nodejs repository
-  apt_repository:
-    repo: deb https://deb.nodesource.com/node_8.x {{ansible_distribution_release}} main
-    state: present
-    filename: nodesource.list
-
-- name: add vscode repository key
-  apt_key:
-    url: https://packages.microsoft.com/keys/microsoft.asc
-    state: present       
-
-- name: add vscode repository
-  apt_repository:
-    repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
-    state: present
-    filename: vscode.list  
-
-- name: add virtualbox 2016 repository key
-  apt_key:
-    url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
-    state: present        
-
-- name: add virtualbox repository key
-  apt_key:
-    url: https://www.virtualbox.org/download/oracle_vbox.asc
-    state: present     
-
-- name: add virtualbox repository
-  apt_repository:
-    repo: deb https://download.virtualbox.org/virtualbox/debian {{ansible_distribution_release}} contrib
-    state: present
-    filename: virtualbox.list          
-
-- name: update tools apt cache
-  apt_repository:
-    update_cache: true
+- include: repositories.yml
 
 - name: install additional packages
   apt:
@@ -52,6 +12,7 @@
   apt:
     deb: https://releases.hashicorp.com/vagrant/2.1.2/vagrant_2.1.2_x86_64.deb
 
+# Will have to do this manually until ansible has a snap plugin
 - name: install postman from snap 
   command: snap install postman
   args:

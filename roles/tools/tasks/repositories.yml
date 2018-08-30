@@ -1,0 +1,66 @@
+---
+
+- name: add nodejs repository key
+  apt_key:
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    state: present     
+
+- name: add nodejs repository
+  apt_repository:
+    repo: deb https://deb.nodesource.com/node_8.x {{ansible_distribution_release}} main
+    state: present
+    update_cache: true
+    filename: nodesource
+
+- name: add vscode repository key
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present       
+
+- name: add vscode repository
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+    state: present
+    update_cache: true
+    filename: vscode  
+
+- name: add virtualbox 2016 repository key
+  apt_key:
+    url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+    state: present        
+
+- name: add virtualbox repository key
+  apt_key:
+    url: https://www.virtualbox.org/download/oracle_vbox.asc
+    state: present     
+
+- name: add virtualbox repository
+  apt_repository:
+    repo: deb https://download.virtualbox.org/virtualbox/debian {{ansible_distribution_release}} contrib
+    state: present
+    update_cache: true
+    filename: virtualbox          
+
+- name: add wine repository key
+  apt_key:
+    url: https://dl.winehq.org/wine-builds/Release.key
+    state: present     
+
+- name: add wine repository
+  apt_repository:
+    repo: deb https://dl.winehq.org/wine-builds/ubuntu {{ansible_distribution_release}} main
+    state: present
+    update_cache: true
+    filename: wine
+
+- name: add google repository key
+  apt_key:
+    url: https://dl.google.com/linux/linux_signing_key.pub
+    state: present     
+
+- name: add google chrome repository
+  apt_repository:
+    repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main    
+    state: present
+    update_cache: true
+    filename: google-chrome

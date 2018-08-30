@@ -3,9 +3,6 @@
     name: "{{ packages }}"
   vars:
     packages:
-    - overlay2
-    - device-mapper-persistent-data
-    - lvm2
     - python-pip
 
 - name: create docker group
@@ -24,18 +21,30 @@
     
 - name: add docker repository
   apt_repository:
-    name: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
     state: present
-    filename: docker.list      
+    update_cache: true
+    filename: docker    
 
 - name: install docker
   apt:
-    name: "{{docker.name}}={{docker.version}}"
-    state: present
-    update_cache: yes       
+    name: "{{docker.name}}"
+    state: latest
+
+- name: copy docker daemon file
+  copy:
+    src: "{{role_path}}/files/daemon.json"
+    dest: /etc/docker/daemon.json
     
 - name: start docker deamon
   service:
     name: docker
     state: started
     enabled: yes
+
+- name: get latest docker compose
+  get_url: 
+    url: "https://github.com/docker/compose/releases/download/{{docker.compose}}/docker-compose-Linux-x86_64"
+    dest: /usr/local/bin/docker-compose
+    mode: 0755
+  creates: /usr/local/bin/docker-compose

@@ -7,5 +7,8 @@ base:
       - build-essential
       - software-properties-common
       - jq
+      - lvm2
+      - whois
+      - aptitude
     uninstall:
       - thunderbird

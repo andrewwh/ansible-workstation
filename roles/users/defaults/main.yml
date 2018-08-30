@@ -2,10 +2,10 @@
 
 users:
   - user: andrew
-    id: 1000
     name: Andrew Wheeler
+    password: $6$BtK8k8dOzj0fDIsu$bVQoNhwZ44XmmM3OXAu3VDZKf2QUyOhG/JoTQn8epevlRQ.E1dz8xXl2nRcyvijbJi7/rYJUWJqdHDoCDTh/M0
     groups: docker,users,sudo,sambashare,adm
   - user: emma
-    id: 1001
     name: Emma Wheeler
+    password: $6$BtK8k8dOzj0fDIsu$bVQoNhwZ44XmmM3OXAu3VDZKf2QUyOhG/JoTQn8epevlRQ.E1dz8xXl2nRcyvijbJi7/rYJUWJqdHDoCDTh/M0
     groups: users

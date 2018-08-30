@@ -1,14 +1,17 @@
 ---
 
+# Removed the following until resolved issues installing:
+#       - winehq-stable
+
 tools:
   packages:
     install:    
-      - docker-ce
       - code
       - virtualbox-5.1
       - terminator
       - openjdk-11-jdk
-      - kubectl
-      - wine
       - gimp
       - inkscape
+      - maven
+      - eclipse
+      - google-chrome-stable

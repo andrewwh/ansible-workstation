@@ -1,0 +1,19 @@
+---
+
+# Not always definitive, but usually vagrant boxes come preinstalled with a vagrant user
+- name: check if running in virtualbox
+  stat:
+    path: /home/vagrant
+  register: is_vagrant
+
+- name: install virtualbox additions
+  apt:
+    name: virtualbox-guest-dkms,virtualbox-guest-utils,virtualbox-guest-x11
+    state: latest  
+  when: is_vagrant.stat.exists
+
+- name: install ubuntu desktop
+  apt:
+    name: ubuntu-desktop
+    state: latest  
+  when: is_vagrant.stat.exists  

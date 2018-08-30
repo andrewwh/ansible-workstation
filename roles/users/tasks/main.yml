@@ -3,13 +3,14 @@
 - name: create shared directory
   file: 
     path: /home/shared
+    state: directory
     owner: root
     group: users
+    recurse: yes
 
 - name: Add the users
   user:
     name: "{{item.user}}"
     comment: "{{item.name}}"
-    uid: "{{item.id}}"
     group: "{{item.groups}}"
   loop: "{{users}}"

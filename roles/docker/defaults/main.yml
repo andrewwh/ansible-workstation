@@ -1,3 +1,4 @@
 docker:
   name: "docker-ce"
-  version: "17.03.0-ce"
+  version: "latest"
+  compose: "1.22.0"
